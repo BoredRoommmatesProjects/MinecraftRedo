@@ -3,14 +3,11 @@
 #include <thread>
 #include <iostream>
 
-/*#include "Spoofy.hpp"
-#include "handlers/WindowHandler.hpp"
-#include "handlers/LogicHandler.hpp"
-#include "handlers/InputHandler.hpp"*/
-
 #include <SFML/System/Clock.hpp>
 
-static void capFrameRate(sf::Time* then, sf::Time* remainder, sf::Clock* clock)
+#include "MinecraftRedo/Application.h"
+
+/*static void capFrameRate(sf::Time* then, sf::Time* remainder, sf::Clock* clock)
 {
 	sf::Time wait, frameTime;
 
@@ -28,7 +25,7 @@ static void capFrameRate(sf::Time* then, sf::Time* remainder, sf::Clock* clock)
 
 	*remainder += sf::milliseconds(0.667);
 	*then = sf::milliseconds(clock->getElapsedTime().asMilliseconds());
-}
+}*/
 
 static void cleanup()
 {
@@ -37,33 +34,12 @@ static void cleanup()
 
 int main()
 {
-	sf::Time then;
-	sf::Time remainder;
-
-    sf::Clock clock; // starts the clock
-
-    //IGame::Instance()->Initialize();
-
 	atexit(cleanup);
 
-	then = clock.getElapsedTime();
+	Config config;
+    Application* app = new Application(config);
 
-	remainder = sf::Time::Zero;
+    app->playingLoop();
 	
-	while (1)
-	{
-		/*IGame::Instance()->GetWindowHandler()->PrepareWindow();
-
-		IGame::Instance()->GetInputHandler()->DoInput();
-
-		IGame::Instance()->GetLogicHandler()->Logic();
-
-		IGame::Instance()->GetWindowHandler()->Draw();
-
-		IGame::Instance()->GetWindowHandler()->PresentWindow();*/
-		
-		capFrameRate(&then, &remainder, &clock);
-	}
-
 	return 0;
 }

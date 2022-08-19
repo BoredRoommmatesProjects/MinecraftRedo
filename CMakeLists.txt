@@ -104,7 +104,7 @@ include_directories(${MINECRAFTREDO_PACKAGES_INCLUDE_DIRS})
 
 # Include MinecraftRedo header files
 include_directories(
-    ${CMAKE_SOURCE_DIR}/include/MinecraftRedo
+    ${CMAKE_SOURCE_DIR}/include
 )
 
 #===============================================================================
